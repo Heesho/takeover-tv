@@ -14,6 +14,7 @@ const TREASURY_ADDRESS = "0x039ec2E90454892fCbA461Ecf8878D0C45FDdFeE"; // Treasu
 // Constants
 const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay));
 const convert = (amount, decimals) => ethers.utils.parseUnits(amount, decimals);
+const divDec6 = (amount, decimals = 6) => amount / 10 ** decimals;
 
 // Contract Variables
 let usdc;
@@ -23,15 +24,15 @@ let television;
 /*===========================  CONTRACT DATA  =======================*/
 
 async function getContracts() {
-  // usdc = await ethers.getContractAt(
-  //   "contracts/mocks/USDC.sol:USDC",
-  //   ""
-  // );
+  usdc = await ethers.getContractAt(
+    "contracts/mocks/USDC.sol:USDC",
+    "0x6c268B147FeB6d50a165F2357cE2eC57EF17d5B7"
+  );
 
-  // television = await ethers.getContractAt(
-  //   "contracts/Television.sol:Television",
-  //   ""
-  // );
+  television = await ethers.getContractAt(
+    "contracts/Television.sol:Television",
+    "0x56CB1908D5B927A8f710a0247c63B87dc578e5dA"
+  );
 
   console.log("Contracts Retrieved");
 }
@@ -99,7 +100,7 @@ async function main() {
 
   // console.log("Starting System Deployment");
   // await deployUsdc();
-  // await deployTelevision();s
+  // await deployTelevision();
   // await printDeployment();
 
   /*********** UPDATE getContracts() with new addresses *************/
@@ -118,6 +119,45 @@ async function main() {
   //===================================================================
 
   console.log("Starting Transactions");
+
+  // console.log("**************************************************************");
+  // console.log("Mint USDC");
+  // const mintTx = await usdc
+  //   .connect(wallet)
+  //   .mint(wallet.address, convert("100000", 6));
+  // await mintTx.wait();
+  // console.log("USDC Minted: ", divDec6(await usdc.balanceOf(wallet.address)));
+  // console.log("**************************************************************");
+
+  // console.log("**************************************************************");
+  // console.log("Television Data");
+  // let res = await television.getSlot0();
+  // console.log("Epoch ID: ", res.epochId);
+  // console.log("Init Price: ", divDec6(res.initPrice));
+  // console.log("Start Time: ", res.startTime);
+  // console.log("Owner: ", res.owner);
+  // console.log("URI: ", res.uri);
+  // console.log("Price: ", divDec6(await television.getPrice()));
+  // console.log("**************************************************************");
+
+  // console.log("**************************************************************");
+  // console.log("Takeover");
+  // let uri = "https://example.com/0";
+  // let price = await television.getPrice();
+  // res = await television.getSlot0();
+  // const approveTx = await usdc
+  //   .connect(wallet)
+  //   .approve(television.address, price);
+  // await approveTx.wait();
+  // const takeoverTx = await television
+  //   .connect(wallet)
+  //   .takeover(uri, wallet.address, res.epochId, 1959481628, price);
+  // await takeoverTx.wait();
+  // console.log(
+  //   "Takeover Successful, new price: ",
+  //   divDec6(await television.getPrice())
+  // );
+  // console.log("**************************************************************");
 }
 
 main()
