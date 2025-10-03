@@ -36,7 +36,274 @@ describe("local: test0", function () {
     console.log();
   });
 
-  it("First test", async function () {
+  it("Television Data", async function () {
+    console.log("******************************************************");
+    console.log("Television Data");
+    let res = await television.getSlot0();
+    console.log("Epoch ID: ", res.epochId);
+    console.log("Init Price: ", res.initPrice);
+    console.log("Start Time: ", res.startTime);
+    console.log("Owner: ", res.owner);
+    console.log("URI: ", res.uri);
+    console.log("Price: ", divDec6(await television.getPrice()));
+    console.log("******************************************************");
+  });
+
+  it("Forward time 4 hours", async function () {
+    console.log("******************************************************");
+    await network.provider.send("evm_increaseTime", [4 * 3600]); // 4 hours
+    await network.provider.send("evm_mine");
+  });
+
+  it("Television Data", async function () {
+    console.log("******************************************************");
+    console.log("Television Data");
+    let res = await television.getSlot0();
+    console.log("Epoch ID: ", res.epochId);
+    console.log("Init Price: ", res.initPrice);
+    console.log("Start Time: ", res.startTime);
+    console.log("Owner: ", res.owner);
+    console.log("URI: ", res.uri);
+    console.log("Price: ", divDec6(await television.getPrice()));
+    console.log("******************************************************");
+  });
+
+  it("User0 takes over channel", async function () {
+    console.log("******************************************************");
+    const uri = "https://example.com/0";
+    let price = await television.getPrice();
+    let res = await television.getSlot0();
+    await usdc.connect(user0).approve(television.address, price);
+    await television
+      .connect(user0)
+      .takeover(uri, user0.address, res.epochId, 1959481628, price);
+    console.log("******************************************************");
+  });
+
+  it("Television Data", async function () {
+    console.log("******************************************************");
+    console.log("Television Data");
+    let res = await television.getSlot0();
+    console.log("Epoch ID: ", res.epochId);
+    console.log("Init Price: ", res.initPrice);
+    console.log("Start Time: ", res.startTime);
+    console.log("Owner: ", res.owner);
+    console.log("URI: ", res.uri);
+    console.log("Price: ", divDec6(await television.getPrice()));
+    console.log("******************************************************");
+  });
+
+  it("Set treasury", async function () {
+    console.log("******************************************************");
+    await television.connect(owner).setTreasury(treasury.address);
+    console.log("******************************************************");
+  });
+
+  it("User1 takes over channel", async function () {
+    console.log("******************************************************");
+    const uri = "https://example.com/1";
+    let price = await television.getPrice();
+    let res = await television.getSlot0();
+    await usdc.connect(user1).approve(television.address, price);
+    await television
+      .connect(user1)
+      .takeover(uri, user1.address, res.epochId, 1959481628, price);
+    console.log("******************************************************");
+  });
+
+  it("Television Data", async function () {
+    console.log("******************************************************");
+    console.log("Television Data");
+    let res = await television.getSlot0();
+    console.log("Epoch ID: ", res.epochId);
+    console.log("Init Price: ", res.initPrice);
+    console.log("Start Time: ", res.startTime);
+    console.log("Owner: ", res.owner);
+    console.log("URI: ", res.uri);
+    console.log("Price: ", divDec6(await television.getPrice()));
+    console.log("******************************************************");
+  });
+
+  it("Forward time 1 hours", async function () {
+    console.log("******************************************************");
+    await network.provider.send("evm_increaseTime", [1 * 3600]); // 1 hours
+    await network.provider.send("evm_mine");
+  });
+
+  it("User1 takes over channel", async function () {
+    console.log("******************************************************");
+    const uri = "https://example.com/1";
+    let price = await television.getPrice();
+    let res = await television.getSlot0();
+    await usdc.connect(user1).approve(television.address, price);
+    await television
+      .connect(user1)
+      .takeover(uri, user1.address, res.epochId, 1959481628, price);
+    console.log("******************************************************");
+  });
+
+  it("Forward time 1 hours", async function () {
+    console.log("******************************************************");
+    await network.provider.send("evm_increaseTime", [1 * 3600]); // 1 hours
+    await network.provider.send("evm_mine");
+  });
+
+  it("User1 takes over channel", async function () {
+    console.log("******************************************************");
+    const uri = "https://example.com/1";
+    let price = await television.getPrice();
+    let res = await television.getSlot0();
+    await usdc.connect(user1).approve(television.address, price);
+    await television
+      .connect(user1)
+      .takeover(uri, user1.address, res.epochId, 1959481628, price);
+    console.log("******************************************************");
+  });
+
+  it("Forward time 1 hours", async function () {
+    console.log("******************************************************");
+    await network.provider.send("evm_increaseTime", [1 * 3600]); // 1 hours
+    await network.provider.send("evm_mine");
+  });
+
+  it("User2 takes over channel", async function () {
+    console.log("******************************************************");
+    const uri = "https://example.com/2";
+    let price = await television.getPrice();
+    let res = await television.getSlot0();
+    await usdc.connect(user2).approve(television.address, price);
+    await television
+      .connect(user2)
+      .takeover(uri, user2.address, res.epochId, 1959481628, price);
+    console.log("******************************************************");
+  });
+
+  it("Forward time 1 hours", async function () {
+    console.log("******************************************************");
+    await network.provider.send("evm_increaseTime", [1 * 3600]); // 1 hours
+    await network.provider.send("evm_mine");
+  });
+
+  it("User1 takes over channel", async function () {
+    console.log("******************************************************");
+    const uri = "https://example.com/1";
+    let price = await television.getPrice();
+    let res = await television.getSlot0();
+    await usdc.connect(user1).approve(television.address, price);
+    await television
+      .connect(user1)
+      .takeover(uri, user1.address, res.epochId, 1959481628, price);
+    console.log("******************************************************");
+  });
+
+  it("Forward time 1 hours", async function () {
+    console.log("******************************************************");
+    await network.provider.send("evm_increaseTime", [1 * 3600]); // 1 hours
+    await network.provider.send("evm_mine");
+  });
+
+  it("User2 takes over channel", async function () {
+    console.log("******************************************************");
+    const uri = "https://example.com/2";
+    let price = await television.getPrice();
+    let res = await television.getSlot0();
+    await usdc.connect(user2).approve(television.address, price);
+    await television
+      .connect(user2)
+      .takeover(uri, user2.address, res.epochId, 1959481628, price);
+    console.log("******************************************************");
+  });
+
+  it("Forward time 16 hours", async function () {
+    console.log("******************************************************");
+    await network.provider.send("evm_increaseTime", [16 * 3600]); // 16 hours
+    await network.provider.send("evm_mine");
+  });
+
+  it("User3 takes over channel", async function () {
+    console.log("******************************************************");
+    const uri = "https://example.com/3";
+    let price = await television.getPrice();
+    let res = await television.getSlot0();
+    await usdc.connect(user3).approve(television.address, price);
+    await television
+      .connect(user3)
+      .takeover(uri, user3.address, res.epochId, 1959481628, price);
+    console.log("******************************************************");
+  });
+
+  it("Forward time 8 hours", async function () {
+    console.log("******************************************************");
+    await network.provider.send("evm_increaseTime", [8 * 3600]); // 8 hours
+    await network.provider.send("evm_mine");
+  });
+
+  it("User0 takes over channel", async function () {
+    console.log("******************************************************");
+    const uri = "https://example.com/0";
+    let price = await television.getPrice();
+    let res = await television.getSlot0();
+    await usdc.connect(user0).approve(television.address, price);
+    await television
+      .connect(user0)
+      .takeover(uri, user0.address, res.epochId, 1959481628, price);
+    console.log("******************************************************");
+  });
+
+  it("Television Data", async function () {
+    console.log("******************************************************");
+    console.log("Television Data");
+    let res = await television.getSlot0();
+    console.log("Epoch ID: ", res.epochId);
+    console.log("Init Price: ", res.initPrice);
+    console.log("Start Time: ", res.startTime);
+    console.log("Owner: ", res.owner);
+    console.log("URI: ", res.uri);
+    console.log("Price: ", divDec6(await television.getPrice()));
+    console.log("******************************************************");
+  });
+
+  it("Forward time 48 hours", async function () {
+    console.log("******************************************************");
+    await network.provider.send("evm_increaseTime", [48 * 3600]); // 48 hours
+    await network.provider.send("evm_mine");
+  });
+
+  it("Television Data", async function () {
+    console.log("******************************************************");
+    console.log("Television Data");
+    let res = await television.getSlot0();
+    console.log("Epoch ID: ", res.epochId);
+    console.log("Init Price: ", res.initPrice);
+    console.log("Start Time: ", res.startTime);
+    console.log("Owner: ", res.owner);
+    console.log("URI: ", res.uri);
+    console.log("Price: ", divDec6(await television.getPrice()));
+    console.log("******************************************************");
+  });
+
+  it("user1 takes over channel", async function () {
+    console.log("******************************************************");
+    const uri = "https://example.com/1";
+    let price = await television.getPrice();
+    let res = await television.getSlot0();
+    await usdc.connect(user1).approve(television.address, price);
+    await television
+      .connect(user1)
+      .takeover(uri, user1.address, res.epochId, 1959481628, price);
+    console.log("******************************************************");
+  });
+
+  it("Television Data", async function () {
+    console.log("******************************************************");
+    console.log("Television Data");
+    let res = await television.getSlot0();
+    console.log("Epoch ID: ", res.epochId);
+    console.log("Init Price: ", res.initPrice);
+    console.log("Start Time: ", res.startTime);
+    console.log("Owner: ", res.owner);
+    console.log("URI: ", res.uri);
+    console.log("Price: ", divDec6(await television.getPrice()));
     console.log("******************************************************");
   });
 });

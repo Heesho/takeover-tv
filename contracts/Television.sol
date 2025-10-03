@@ -24,6 +24,7 @@ contract Television is Ownable {
         uint192 initPrice;
         uint40 startTime;
         address owner;
+        string uri;
     }
 
     Slot0 internal slot0;
@@ -56,7 +57,7 @@ contract Television is Ownable {
         slot0.owner = msg.sender;
     }
 
-    function takeover(address channelOwner, uint256 epochId, uint256 deadline, uint256 maxPaymentAmount) external nonReentrant returns (uint256 paymentAmount) {
+    function takeover(string memory uri, address channelOwner, uint256 epochId, uint256 deadline, uint256 maxPaymentAmount) external nonReentrant returns (uint256 paymentAmount) {
         if (block.timestamp > deadline) revert Television__Expired();
 
         Slot0 memory slot0Cache = slot0;
@@ -89,6 +90,7 @@ contract Television is Ownable {
         slot0Cache.initPrice = uint192(newInitPrice);
         slot0Cache.startTime = uint40(block.timestamp);
         slot0Cache.owner = channelOwner;
+        slot0Cache.uri = uri;
 
         slot0 = slot0Cache;
 
