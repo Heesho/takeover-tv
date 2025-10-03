@@ -1,2 +1,1 @@
-# stickrnet-hardhat
 # takeover-tv
