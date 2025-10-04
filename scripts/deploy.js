@@ -31,7 +31,7 @@ async function getContracts() {
 
   television = await ethers.getContractAt(
     "contracts/Television.sol:Television",
-    "0x56CB1908D5B927A8f710a0247c63B87dc578e5dA"
+    "0x7136763c7951F923b1861774CF9ef12095cb21DD"
   );
 
   console.log("Contracts Retrieved");
@@ -130,15 +130,24 @@ async function main() {
   // console.log("**************************************************************");
 
   // console.log("**************************************************************");
-  // console.log("Television Data");
-  // let res = await television.getSlot0();
-  // console.log("Epoch ID: ", res.epochId);
-  // console.log("Init Price: ", divDec6(res.initPrice));
-  // console.log("Start Time: ", res.startTime);
-  // console.log("Owner: ", res.owner);
-  // console.log("URI: ", res.uri);
-  // console.log("Price: ", divDec6(await television.getPrice()));
+  // console.log("Set Treasury");
+  // const setTreasuryTx = await television
+  //   .connect(wallet)
+  //   .setTreasury(TREASURY_ADDRESS);
+  // await setTreasuryTx.wait();
+  // console.log("Treasury Set: ", await television.treasury());
   // console.log("**************************************************************");
+
+  console.log("**************************************************************");
+  console.log("Television Data");
+  let res = await television.getSlot0();
+  console.log("Epoch ID: ", res.epochId);
+  console.log("Init Price: ", divDec6(res.initPrice));
+  console.log("Start Time: ", res.startTime);
+  console.log("Owner: ", res.owner);
+  console.log("URI: ", res.uri);
+  console.log("Price: ", divDec6(await television.getPrice()));
+  console.log("**************************************************************");
 
   // console.log("**************************************************************");
   // console.log("Takeover");
