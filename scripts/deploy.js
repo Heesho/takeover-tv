@@ -31,7 +31,7 @@ async function getContracts() {
 
   television = await ethers.getContractAt(
     "contracts/Television.sol:Television",
-    "0x7136763c7951F923b1861774CF9ef12095cb21DD"
+    "0x46Fcd75Dd8cB75e678D078353e8C3fd32671f215"
   );
 
   console.log("Contracts Retrieved");
@@ -138,16 +138,16 @@ async function main() {
   // console.log("Treasury Set: ", await television.treasury());
   // console.log("**************************************************************");
 
-  console.log("**************************************************************");
-  console.log("Television Data");
-  let res = await television.getSlot0();
-  console.log("Epoch ID: ", res.epochId);
-  console.log("Init Price: ", divDec6(res.initPrice));
-  console.log("Start Time: ", res.startTime);
-  console.log("Owner: ", res.owner);
-  console.log("URI: ", res.uri);
-  console.log("Price: ", divDec6(await television.getPrice()));
-  console.log("**************************************************************");
+  // console.log("**************************************************************");
+  // console.log("Television Data");
+  // let res = await television.getSlot0();
+  // console.log("Epoch ID: ", res.epochId);
+  // console.log("Init Price: ", divDec6(res.initPrice));
+  // console.log("Start Time: ", res.startTime);
+  // console.log("Owner: ", res.owner);
+  // console.log("URI: ", res.uri);
+  // console.log("Price: ", divDec6(await television.getPrice()));
+  // console.log("**************************************************************");
 
   // console.log("**************************************************************");
   // console.log("Takeover");
