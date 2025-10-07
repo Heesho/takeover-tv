@@ -10,7 +10,7 @@ contract Television is Ownable {
     uint256 public constant FEE = 1_000;
     uint256 public constant DIVISOR = 10_000;
     uint256 public constant PRECISION = 1e18;
-    uint256 public constant EPOCH_PERIOD = 1 days;
+    uint256 public constant EPOCH_PERIOD = 1 hours;
     uint256 public constant PRICE_MULTIPLIER = 2e18;
     uint256 public constant MIN_INIT_PRICE = 1e6;
     uint256 public constant ABS_MAX_INIT_PRICE = type(uint192).max;

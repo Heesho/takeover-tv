@@ -31,7 +31,7 @@ async function getContracts() {
 
   television = await ethers.getContractAt(
     "contracts/Television.sol:Television",
-    "0x46Fcd75Dd8cB75e678D078353e8C3fd32671f215"
+    "0x1D3311BbA327B89534238F696e643DBbAE79a612"
   );
 
   console.log("Contracts Retrieved");
