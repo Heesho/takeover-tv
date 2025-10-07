@@ -6,7 +6,7 @@ const AddressZero = "0x0000000000000000000000000000000000000000";
 /*===================================================================*/
 /*===========================  SETTINGS  ============================*/
 
-const TREASURY_ADDRESS = "0x039ec2E90454892fCbA461Ecf8878D0C45FDdFeE"; // Treasury Address
+const TREASURY_ADDRESS = "0xC1bFF47f4170c249Af2bd8dB044E95F7302B6680"; // Treasury Address
 const USDC_ADDRESS = "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"; // USDC Address
 
 /*===========================  END SETTINGS  ========================*/
