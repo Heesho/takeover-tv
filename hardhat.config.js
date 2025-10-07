@@ -4,7 +4,8 @@ require("@nomiclabs/hardhat-waffle");
 require("@nomicfoundation/hardhat-verify");
 require("solidity-coverage");
 
-const CHAIN_ID = 84532; // base sepolia chain id
+// const CHAIN_ID = 84532; // base sepolia chain id
+const CHAIN_ID = 8453; // base mainnet chain id
 
 config();
 const PRIVATE_KEY = process.env.PRIVATE_KEY || "";
@@ -19,7 +20,6 @@ module.exports = {
         enabled: true,
         runs: 200,
       },
-      viaIR: true,
     },
   },
   networks: {
@@ -35,10 +35,12 @@ module.exports = {
     customChains: [
       {
         network: "mainnet",
-        chainId: 84532,
+        chainId: CHAIN_ID,
         urls: {
-          apiURL: "https://api.etherscan.io/v2/api?chainid=84532",
-          browserURL: "https://sepolia.basescan.org/",
+          // apiURL: "https://api.etherscan.io/v2/api?chainid=84532",
+          // browserURL: "https://sepolia.basescan.org/",
+          apiURL: "https://api.etherscan.io/v2/api?chainid=8453",
+          browserURL: "https://basescan.org/",
         },
       },
     ],

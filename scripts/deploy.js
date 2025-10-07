@@ -7,6 +7,7 @@ const AddressZero = "0x0000000000000000000000000000000000000000";
 /*===========================  SETTINGS  ============================*/
 
 const TREASURY_ADDRESS = "0x039ec2E90454892fCbA461Ecf8878D0C45FDdFeE"; // Treasury Address
+const USDC_ADDRESS = "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"; // USDC Address
 
 /*===========================  END SETTINGS  ========================*/
 /*===================================================================*/
@@ -31,7 +32,7 @@ async function getContracts() {
 
   television = await ethers.getContractAt(
     "contracts/Television.sol:Television",
-    "0x1D3311BbA327B89534238F696e643DBbAE79a612"
+    "0x9C751E6825EDAa55007160b99933846f6ECeEc9B"
   );
 
   console.log("Contracts Retrieved");
@@ -63,7 +64,7 @@ async function verifyUsdc() {
 async function deployTelevision() {
   console.log("Starting TokenFactory Deployment");
   const televisionArtifact = await ethers.getContractFactory("Television");
-  const televisionContract = await televisionArtifact.deploy(usdc.address, {
+  const televisionContract = await televisionArtifact.deploy(USDC_ADDRESS, {
     gasPrice: ethers.gasPrice,
   });
   television = await televisionContract.deployed();
@@ -76,14 +77,15 @@ async function verifyTelevision() {
   await hre.run("verify:verify", {
     address: television.address,
     contract: "contracts/Television.sol:Television",
-    constructorArguments: [usdc.address],
+    constructorArguments: [USDC_ADDRESS],
   });
   console.log("Television Verified");
 }
 
 async function printDeployment() {
   console.log("**************************************************************");
-  console.log("USDC: ", usdc.address);
+  // console.log("USDC: ", usdc.address);
+  console.log("USDC: ", USDC_ADDRESS);
   console.log("Television: ", television.address);
   console.log("**************************************************************");
 }
